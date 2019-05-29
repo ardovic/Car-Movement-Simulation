@@ -1,6 +1,6 @@
 task installGitHooks() {
     group = 'car'
-    description = 'Install git hooks'
+    description = 'Installing git hooks'
 
     doLast {
         copy {
