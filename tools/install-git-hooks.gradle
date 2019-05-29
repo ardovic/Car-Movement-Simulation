@@ -1,0 +1,14 @@
+task installGitHooks() {
+    group = 'car'
+    description = 'Install git hooks'
+
+    doLast {
+        copy {
+            from new File(rootProject.rootDir, 'tools/hooks/prepare-commit-msg')
+            into { new File(rootProject.rootDir, '.git/hooks') }
+        }
+        println "All git hooks have been installed."
+    }
+}
+
+clean.dependsOn installGitHooks

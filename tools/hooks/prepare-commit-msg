@@ -1,0 +1,11 @@
+#!/bin/sh
+
+BRANCH=`git branch | grep '^*' | sed -e 's/^\* //'`
+MESSAGE=`cat "$1"`
+JIRA_ID=$(echo "$BRANCH" | grep -Eo "[A-Z0-9]{1,10}-?[A-Z0-9]+-\d+")
+
+if [ -z "$JIRA_ID" ]; then
+    echo "$MESSAGE" > "$1"
+else
+    echo "[$JIRA_ID] $MESSAGE" > "$1"
+fi
